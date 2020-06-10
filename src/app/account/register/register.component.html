@@ -1,0 +1,277 @@
+<div class="register">
+  <h2>Registro</h2>
+  <p>
+    Crea una cuenta totalmente gratis para empezar a comprar en restaurantes
+    <span class="shine">locales</span>
+  </p>
+  <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="col-6 form-group">
+        <label for="name"
+          >Nombre<span
+            class="alert-icon"
+            *ngIf="
+              formGroup.get('name').invalid &&
+              (formGroup.get('name').dirty || formGroup.get('name').touched)
+            "
+            ><img src="assets/icons/alert.svg" />
+          </span>
+        </label>
+        <input
+          type="text"
+          name="name"
+          formControlName="name"
+          id="name"
+          class="form-control input"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+            formGroup.controls.name.hasError('required') &&
+            (formGroup.controls.name.dirty || formGroup.controls.name.touched)
+          "
+          >Requerido</small
+        >
+        <small
+          class="text-danger"
+          *ngIf="
+            formGroup.controls.name.hasError('pattern') &&
+            formGroup.controls.name.dirty
+          "
+          >No puede llevar numeros</small
+        >
+      </div>
+      <div class="col-6 form-group">
+        <label for="lastname"
+          >Apellido<span
+            class="alert-icon"
+            *ngIf="
+              formGroup.controls.lastname.invalid &&
+              (formGroup.controls.lastname.dirty || formGroup.controls.lastname.touched)
+            "
+            ><img src="assets/icons/alert.svg" />
+          </span>
+        </label>
+        <input
+          formControlName="lastname"
+          type="text"
+          name="lastname"
+          id="lastname"
+          class="form-control input"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+            formGroup.controls.lastname.hasError('required') &&
+            (formGroup.controls.lastname.dirty ||
+              formGroup.controls.lastname.touched)
+          "
+          >Requerido</small
+        >
+        <small
+          class="text-danger"
+          *ngIf="
+            formGroup.controls.lastname.hasError('pattern') &&
+            formGroup.controls.lastname.dirty
+          "
+          >No puede llevar numeros</small
+        >
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-6 form-group">
+        <label for="email"
+          >Email<span
+            class="alert-icon"
+            *ngIf="
+              formGroup.controls.email.invalid &&
+              (formGroup.controls.email.dirty ||
+                formGroup.controls.email.touched)
+            "
+            ><img src="assets/icons/alert.svg" />
+          </span>
+        </label>
+        <input
+          formControlName="email"
+          type="email"
+          name="email"
+          id="email"
+          class="form-control input"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+            formGroup.controls.email.hasError('required') &&
+            (formGroup.controls.email.dirty || formGroup.controls.email.touched)
+          "
+          >Requerido</small
+        >
+        <small
+          class="text-danger"
+          *ngIf="
+            formGroup.controls.email.hasError('pattern') &&
+            formGroup.controls.email.dirty
+          "
+          >No es un correo valido</small
+        >
+      </div>
+      <div class="col-6 form-group">
+        <label for="phone"
+          >Teléfono<span
+            class="alert-icon"
+            *ngIf="
+              formGroup.controls.phone.invalid &&
+              (formGroup.controls.phone.dirty ||
+                formGroup.controls.phone.touched)
+            "
+            ><img src="assets/icons/alert.svg" />
+          </span>
+        </label>
+        <input
+          formControlName="phone"
+          type="text"
+          name="phone"
+          id="phone"
+          class="form-control input"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+            formGroup.controls.phone.hasError('required') &&
+            (formGroup.controls.phone.dirty || formGroup.controls.phone.touched)
+          "
+          >Requerido</small
+        >
+        <small
+          class="text-danger"
+          *ngIf="
+            formGroup.controls.phone.hasError('pattern') &&
+            formGroup.controls.phone.dirty
+          "
+          >No es un telefono valido</small
+        >
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-6 form-group">
+        <label for="password"
+          >Contraseña<span
+            class="alert-icon"
+            *ngIf="
+              formGroup.controls.password.invalid &&
+              (formGroup.controls.password.dirty ||
+                formGroup.controls.password.touched)
+            "
+            ><img src="assets/icons/alert.svg" />
+          </span>
+        </label>
+        <input
+          formControlName="password"
+          type="password"
+          name="password"
+          id="password"
+          class="form-control input"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+            formGroup.controls.password.hasError('invalidPassword') &&
+            formGroup.controls.password.dirty
+          "
+          >La contraseña es invalida</small
+        >
+        <small
+          class="text-danger"
+          *ngIf="
+            formGroup.controls.password.hasError('required') &&
+            (formGroup.controls.password.dirty ||
+              formGroup.controls.password.touched)
+          "
+          >La contraseña es requerida</small
+        >
+      </div>
+      <div class="col-6 form-group">
+        <label for="cpassword"
+          >Confirmar Contraseña<span
+            class="alert-icon"
+            *ngIf="
+              formGroup.controls.confirmPsw.invalid &&
+              (formGroup.controls.confirmPsw.dirty ||
+                formGroup.controls.confirmPsw.touched)
+            "
+            ><img src="assets/icons/alert.svg" />
+          </span>
+        </label>
+        <input
+          formControlName="confirmPsw"
+          type="password"
+          name="cpassword"
+          id="cpassword"
+          class="form-control input"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+            formGroup.hasError('passwordsNotEqual') &&
+            formGroup.controls.confirmPsw.dirty
+          "
+          >La contraseñass no son iguales</small
+        >
+        <small
+          class="text-danger"
+          *ngIf="
+            formGroup.controls.confirmPsw.hasError('required') &&
+            (formGroup.controls.confirmPsw.dirty ||
+              formGroup.controls.confirmPsw.touched)
+          "
+          >Debe confirmar la contraseña</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="rol">Su rol principal<span
+        class="alert-icon"
+        *ngIf="
+          formGroup.controls.rol.invalid &&
+          (formGroup.controls.rol.dirty ||
+            formGroup.controls.rol.touched)
+        "
+        ><img src="assets/icons/alert.svg" />
+      </span></label>
+      <select
+      name="rol"
+      id="rol"
+      class="form-control"
+      formControlName="rol"
+      >
+        <option class="selector form-control" *ngFor="let rol of roles" [value]="rol.id">{{rol.name}}</option>
+      </select>
+      <small
+      class="text-danger"
+      *ngIf="
+        formGroup.controls.rol.hasError('required') &&
+        (formGroup.controls.rol.dirty ||
+          formGroup.controls.rol.touched)
+      "
+      >Un rol principal es requerido</small
+    >
+    </div>
+    <div class="form-group select">
+      <input
+        type="checkbox"
+        name="tou"
+        id="tou"
+        formControlName="acceptTerms"
+      /><label
+        >Estoy de acuerdo con los
+        <span class="shine">Terminos de uso</span></label
+      >
+    </div>
+    <button type="submit" class="btn btn-primary">Registrarme</button>
+    <div class="mt-5 change">
+      <p>
+        ¿Ya tienes una cuenta? <a routerLink="/account/login">Ingresa aquí</a>
+      </p>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,35 @@
+$green-light: #96D9C6;
+$blue-soft: #48668B;
+$blue: #253B59;
+.register {
+    width: 100%;
+    padding: 35px 0;
+    .change{
+        font-size: 14px;
+    }
+h2{
+    margin-bottom: 20px;
+    color: $blue;
+}
+p{
+    margin-bottom: 25px;
+}
+.form-row {
+    margin-bottom: 20px;
+    .form-group{
+        margin-bottom: 0;
+    }
+}
+.select {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    input{
+        margin-right: 10px;
+    }
+    label{
+        vertical-align: text-bottom;
+    }
+}
+
+}

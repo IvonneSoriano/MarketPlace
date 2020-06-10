@@ -1,0 +1,38 @@
+nav{
+    display: flex;
+    background-color: yellow;
+    padding: 5px 15px;
+    .col1{
+        flex: 0 0 60%;
+        display: flex;
+        background-color: whitesmoke;
+        .logo{
+            font-weight: bold;
+            flex: 0 0 30%;
+        }
+        .search{
+            flex: 1;
+            display: flex;
+            background: white;
+            align-items: center;
+            span{
+                flex: 0 0 5%;
+                cursor: pointer;
+                img{
+                    width: 15px;
+                    height: 15px;
+                }
+            }
+            input{
+                border: none;
+                display: block;
+                outline: none!important;
+                // border-bottom: 1px solid rgba(0,0,0,0.4);
+                flex: 1;
+            }
+        }
+    }
+    .col2{
+        flex: 0 0 calc(40% - 20px);
+    }
+}

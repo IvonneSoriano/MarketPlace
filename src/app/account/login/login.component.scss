@@ -1,0 +1,16 @@
+$green-light: #96D9C6;
+$blue-soft: #48668B;
+$blue: #253B59;
+
+.login{
+    h2{
+        margin-bottom: 30px;
+        color: $blue;
+    }
+    p{
+        margin-bottom: 30px;
+    }
+    .form-group{
+        margin-bottom: 15px;
+    }
+}

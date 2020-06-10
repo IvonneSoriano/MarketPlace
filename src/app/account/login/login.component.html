@@ -1,0 +1,27 @@
+<div class="login col-lg-10">
+    <h2>Iniciar Sesión</h2>
+    <p>Mira los productos, selecciona el restaurante <span class="shine">local</span> que más te guste y,  ¡a comer!</p>
+    <form class="form" #form="ngForm" >
+   
+      
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" class="form-control input" />
+        </div>
+        <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              class="form-control input"
+            />
+          </div>
+    
+      <button class="btn btn-primary">Iniciar Sesión</button>
+      <div class="change">
+        <p>¿No tienes una cuenta? <a routerLink="/account/register">Regístrate aquí</a></p>
+    </div>
+    </form>
+  </div>
+  

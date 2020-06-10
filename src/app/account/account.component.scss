@@ -1,0 +1,17 @@
+.container-fluid {
+    height: 100vh;
+    .images {
+        display: flex;
+        align-items: center;
+
+        img {
+            max-width: 100%;
+        }
+    }
+    .form{
+        // display: flex;   
+        padding: 0px 35px;
+        align-items: center;
+        justify-content: center;
+    }
+}

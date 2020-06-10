@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+$green-light: #96D9C6;
+$green: #24A6A6;
+$dark-purple: #111440;
+$blue-soft: #48668B;
+$blue: #253B59;
+.btn{
+    padding: 8px 40px;
+}
+.btn-primary{
+background-color:$blue;
+border-color: $blue;
+}
+.btn-primary:hover, .btn-primary:focus{
+    background-color:$dark-purple;
+    border-color: $dark-purple;
+    }
+.shine{
+    color: $dark-purple;
+    font-weight: bold;
+}
+
+label{
+    color: $blue-soft;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+.input {
+    border: none;
+    border-bottom: 2px solid $green-light;
+    border-radius: 0;
+    outline: none !important;
+    width: 95%;
+    padding: 0 .75rem!important;
+}
+.alert-icon{
+    
+    img{
+        width: 15px;
+        height: 15px;
+        vertical-align: text-top;
+        margin-left: 10px;
+    }
+}
