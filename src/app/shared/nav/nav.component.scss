@@ -1,15 +1,20 @@
 nav{
     display: flex;
-    background-color: yellow;
-    padding: 5px 15px;
+    flex-wrap: wrap;
+    // background-color: yellow;
+
+    padding: 10px 20px;
+    justify-content: space-between;
+    .logo{
+        font-weight: bold;
+        flex: 0 0 calc(20% - 20px);
+        font-size: 25px;
+    }
     .col1{
-        flex: 0 0 60%;
+        flex: 0 0 50%;
         display: flex;
         background-color: whitesmoke;
-        .logo{
-            font-weight: bold;
-            flex: 0 0 30%;
-        }
+     
         .search{
             flex: 1;
             display: flex;
@@ -24,15 +29,19 @@ nav{
                 }
             }
             input{
-                border: none;
-                display: block;
                 outline: none!important;
-                // border-bottom: 1px solid rgba(0,0,0,0.4);
                 flex: 1;
+                
             }
+
         }
     }
     .col2{
-        flex: 0 0 calc(40% - 20px);
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+        p{
+            margin: 0;
+        }
     }
 }
