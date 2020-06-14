@@ -1,0 +1,101 @@
+$yeseva : 'Yeseva One',
+cursive;
+
+.searching-bar {
+    margin: 25px 0;
+
+    // height: 300px;
+    .row {
+        margin: 0;
+        padding: 0;
+    }
+
+    .text {
+        display: flex;
+        justify-content: flex-end;
+
+        &>div {
+            max-width: 550px;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 100%;
+
+            h2 {
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .salvadorean {
+                // background: -webkit-linear-gradient(top, #cedbe9 0%, #aac5de 17%, #6199c7 50%, #3a84c3 51%, #419ad6 59%, #4bb8f0 71%, #3a8bc2 84%, #26558b 100%);
+                background: -webkit-linear-gradient(#360033, #0b8793);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .form {
+                width: 80%;
+
+                .search-bar {
+                    display: flex;
+                    align-items: baseline;
+                }
+            }
+        }
+    }
+
+    .images {
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        padding: 0;
+        justify-content: flex-end;
+    }
+
+    @media(max-width: 768px) {
+        .text {
+            margin-bottom: 30px;
+            justify-content: center;
+            order: 2;
+
+            .form {
+                margin-top: 30px;
+            }
+        }
+
+        .images {
+            max-height: 200px;
+            margin-bottom: 15px;
+            justify-content: center;
+            order: 1;
+
+            img {
+                max-width: 100%;
+            }
+        }
+    }
+
+    @media(max-width: 500px) {
+
+        .text {
+            order: 2;
+
+            &>div {
+                .form {
+                    width: 100%;
+                }
+            }
+        }
+
+        .images {
+            max-height: 150px;
+            order: 1;
+            margin-bottom: 15px;
+
+            img {
+                max-width: 100%;
+            }
+        }
+    }
+}
