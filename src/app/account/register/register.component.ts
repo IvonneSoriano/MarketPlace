@@ -32,9 +32,9 @@ export class RegisterComponent implements OnInit {
 
   //Creando el formulario
   private buildForm() {
-    
 
-    
+
+
     this.formGroup = this.formBuilder.group({
       name: new FormControl("", [Validators.required, Validators.pattern(/^[A-Z]+$/i)]),
       lastname: ["", [Validators.required, Validators.pattern(/^[A-Z]+$/i)]],
@@ -60,7 +60,7 @@ export class RegisterComponent implements OnInit {
     let regex = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,}$/;
     // Para evaluarlas se usa la funcion .test
     if(!regex.test(pass)){
-      error = {invalidPassword: true}; 
+      error = {invalidPassword: true};
     }
     return error;
   }
@@ -70,7 +70,7 @@ export class RegisterComponent implements OnInit {
     let confirm = form.controls.confirmPsw;
     if(p.value==null){
       confirm.disabled;
-      
+
     }
   }
 
@@ -80,13 +80,13 @@ export class RegisterComponent implements OnInit {
     let confirm = form.controls.confirmPsw;
     let p = form.controls.password;
 
-    
+
       if(p.dirty && confirm.dirty){
         if(confirm.value !== p.value){
           error= {passwordsNotEqual: true};
         }
       }
-    
+
     return error;
   }
 
@@ -95,14 +95,18 @@ export class RegisterComponent implements OnInit {
       let user={
         rol: this.formGroup.controls.rol.value,
         name: this.formGroup.controls.name.value,
-        lastname: this.formGroup.controls.lastname.value,
+        lastName: this.formGroup.controls.lastname.value,
         phone: this.formGroup.controls.phone.value,
         email: this.formGroup.controls.email.value,
         password: this.formGroup.controls.name.value
       };
       console.log(user);
-this.userService.register(user);
-      
+      this.userService.register1(user).subscribe(data =>{
+        console.log(data);
+      }, err =>{
+        console.log(err.error.fieldErrors)
+      } );
+
     }
     else{
       console.log("El formulario no es valido!");
