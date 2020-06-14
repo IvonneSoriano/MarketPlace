@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 
 import { ClientRoutingModule } from './client-routing.module';
 import { ClientComponent } from './client.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
-  declarations: [ClientComponent],
+  declarations: [ClientComponent, DashboardComponent],
   imports: [
     CommonModule,
     ClientRoutingModule,
