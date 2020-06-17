@@ -5,10 +5,11 @@ import { CommonModule } from '@angular/common';
 import { ClientRoutingModule } from './client-routing.module';
 import { ClientComponent } from './client.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { RestaurantPageComponent } from './restaurant-page/restaurant-page.component';
 
 
 @NgModule({
-  declarations: [ClientComponent, DashboardComponent],
+  declarations: [ClientComponent, DashboardComponent, RestaurantPageComponent],
   imports: [
     CommonModule,
     ClientRoutingModule,
