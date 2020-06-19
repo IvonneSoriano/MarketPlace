@@ -1,28 +1,21 @@
-import { UserInterface } from './../model/user.interface';
+import { UserInterface} from './../model/user.interface';
+import { ErrorRegisterInterface } from './../model/errorRegister.interface'
+import { UserCredentials } from './../model/userCredentials.interface'
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router'
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  user: UserInterface;
-  users: UserInterface[] = [];
   urlRegister = "http://localhost:8080/signup/register";
+  urlLogin = "https://inw-login.herokuapp.com/login";
 
-  constructor(private http:HttpClient) { }
-
-  register(newUser: UserInterface) {
-    let id = Math.floor(Math.random() * 10) + 5;
-    console.log(`El id es ${id}`);
-    this.user = newUser;
-    this.user.id = id;
-    localStorage.setItem("user", JSON.stringify(this.user));
-    this.users.push(this.user);
-
-  }
+  constructor(private http:HttpClient, private router:Router) { }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -30,10 +23,45 @@ export class UserService {
     })
   };
 
-  register1(newUser: UserInterface):Observable<any>{
-    let newUserJson = JSON.stringify(newUser);
-    console.log(newUserJson);
-    return this.http.post<any>(this.urlRegister,newUserJson,this.httpOptions);
+  login(userCredentialsJson:UserCredentials):Observable<any>{
+    let userCredentials = JSON.stringify(userCredentialsJson)
+    console.log(userCredentials)
+    return this.http.post<any>(this.urlLogin,userCredentials,this.httpOptions);
+  }
+
+  register(newUserJson: UserInterface):Observable<any>{
+    let newUser = JSON.stringify(newUserJson);
+    console.log(newUser);
+    return this.http.post<any>(this.urlRegister,newUser,this.httpOptions);
+  }
+
+  activateUser(data:any){
+    this.setLocalStorage(data);
+    this.redirectTo()
+  }
+
+  setLocalStorage(data:any):void{
+    localStorage.removeItem("usuario");
+    localStorage.setItem("usuario",JSON.stringify(data));
+  }
+
+  redirectTo(){
+    let rol = JSON.parse(localStorage.getItem("usuario")).userRol;
+    switch(rol){
+      case "consumidor":
+        this.router.navigate(["/client"]);
+        break;
+      case "transportista":
+        this.router.navigate(["/transporter"]);
+      break;
+      case "vendedor":
+        this.router.navigate(["/seller"]);
+      break;
+      default:
+        this.router.navigate(["/account/login"]);
+        break;
+    }
+
   }
 
 
