@@ -107,6 +107,11 @@
           >Requerido</small
         >
         <small
+        class="text-danger"
+        *ngIf="emailDuplicated">
+          {{emailDuplicated}}
+        </small>
+        <small
           class="text-danger"
           *ngIf="
             formGroup.controls.email.hasError('pattern') &&
@@ -150,6 +155,11 @@
           "
           >No es un telefono valido</small
         >
+        <small
+        class="text-danger"
+        *ngIf="phoneDuplicated">
+          {{phoneDuplicated}}
+        </small>
       </div>
     </div>
     <div class="form-row">
@@ -267,7 +277,7 @@
         <span class="shine">Terminos de uso</span></label
       >
     </div>
-    <button type="submit" class="btn btn-primary">Registrarme</button>
+    <button type="submit" class="btn btn-primary" [disabled] = "formGroup.invalid">Registrarme</button>
     <div class="mt-5 change">
       <p>
         ¿Ya tienes una cuenta? <a routerLink="/account/login">Ingresa aquí</a>

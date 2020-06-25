@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators, AbstractControl, FormControl, Validator } from '@angular/forms';
 import { UserService } from '../../services/user.service';
+import { ErrorRegisterInterface } from './../../model/errorRegister.interface'
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -23,6 +26,10 @@ export class RegisterComponent implements OnInit {
     name: "vendedor"
   },
 ]
+
+  emailDuplicated:string = null;
+  phoneDuplicated:string = null;
+
 
   constructor(private formBuilder: FormBuilder, private userService: UserService) { }
 
@@ -98,18 +105,42 @@ export class RegisterComponent implements OnInit {
         lastName: this.formGroup.controls.lastname.value,
         phone: this.formGroup.controls.phone.value,
         email: this.formGroup.controls.email.value,
-        password: this.formGroup.controls.name.value
+        password: this.formGroup.controls.password.value
       };
       console.log(user);
-      this.userService.register1(user).subscribe(data =>{
-        console.log(data);
-      }, err =>{
-        console.log(err.error.fieldErrors)
-      } );
+      this.registrar(user);
 
     }
     else{
       console.log("El formulario no es valido!");
     }
+  }
+
+  registrar(newUser){
+    this.userService.register(newUser).subscribe(data => {
+      console.log(data)
+      let userData = data.data
+      this.userService.activateUser(userData);
+    },
+    err => {
+      this.emailDuplicated = null
+      this.phoneDuplicated = null
+      let fieldErrors = err.error.errors;
+      try {
+        if(fieldErrors.length > 0){
+          for (const field of fieldErrors) {
+            if(field.field == 'email')
+              this.emailDuplicated = field.message
+              if(field.field == 'phone')
+              this.phoneDuplicated = field.message
+          }
+        }
+
+      } catch (error) {
+        console.log(error)
+      }
+
+
+    });
   }
 }
