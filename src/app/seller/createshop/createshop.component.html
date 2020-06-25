@@ -1,0 +1,13 @@
+<form class="form" #form="ngForm" (ngSubmit)="crear(form)" enctype="multipart/form-data">
+  <p>
+    <label>Nombre:</label>
+    <input type="text" id="nombre" name="nombre" ngModel required placeholder="Nombre de la tienda"/>
+  </p>
+  <p>
+    <label>Imagen:</label>
+    <input type="file" id="imagen" name="imagen" ngModel accept="image/*" (change)="capturarFile($event)"/>
+  </p>
+  <p>
+    <button>Crear tienda</button>
+  </p>
+</form>
