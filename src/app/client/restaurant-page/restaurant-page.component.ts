@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ProductInterface } from './../../model/product.interface';
+import { RestaurantService } from './../../services/restaurant.service';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-restaurant-page',
@@ -9,78 +12,47 @@ export class RestaurantPageComponent implements OnInit {
 
   //ATRIBUTOS
   //Este es el resultado
-  public result = { 
-    "shopId":1,
-    "menuId":40,
-    "name":"menu del lunes",
-    "active":1,
-    "period":1,
-    "date":"",
-    "menuDetails":[
-      {
-        productName:"pupusa de frijol",
-        unitaryPrice:0.25,
-        productCategory:""
-      },
-      {
-        productName:"pupusa de queso",
-        unitaryPrice:0.40,
-        productCategory:""
-      },
-      {
-        productName:"pupusa de frijol con queso",
-        unitaryPrice:0.35,
-        productCategory:""
-      },
-      {
-        productName:"pupusa revuelta",
-        unitaryPrice:0.35,
-        productCategory:""
-      }
-    
-    ],
-    "promotions":[
-      {
-        name:"promoción rikisima",
-        "price":4.5,
-        promotionDetails:[
-          {
-            "nameProduct":"Pupusa de frijol con queso",
-            "quantity":10
-          },
-          {
-            "nameProduct":"Coca cola 1L",
-            "quantity":1
-          }
-        ]	
-      },
-      {
-        name:"promoción cheros",
-        "price":3.5,
-        promotionDetails:[
-          {
-            "nameProduct":"Hot Dogs",
-            "quantity":2
-          },
-          {
-            "nameProduct":"Coca cola 1L",
-            "quantity":1
-          }
-        ]	
-      }
-    
-    ]
-    };    
+  @ViewChild('modalProduct') modal: any;
   public cantProducto = 1;
-  public menus =[{
-
-  }];
-  constructor() { 
+  public menus:[];
+  public promotions:[];
+  public selectedMenu: ProductInterface;
+  public restaurantId;
+  constructor(private restaurantService: RestaurantService, private route: ActivatedRoute) { 
+    route.params.subscribe(params => {
+      this.restaurantId =  params.restaurant;
+    });
   }
 
   ngOnInit(): void {
-    console.log(this.result["promotions"]);
+    this.getMenu();
   }
 
+  getMenu(){
+    console.log(`Este es el ide de restaurante ${this.restaurantId}`);
+    this.restaurantService.getDailyMenu(this.restaurantId).subscribe(result=> {
+      let idMenu:number = result["data"]["id"];
+      console.log(`Este es el id de menu ${idMenu}`);
+      this.restaurantService.getMenuDetail(idMenu).subscribe(data => {
+        console.log(data["data"]);
+        this.menus = data["data"];
+      },
+      err => {
+        alert("Hay un error");
+        console.log(err);
+      });
+    },
+    error => {
+      alert("Hay error");
+      console.log(error);
+    });
+  }
 
+  preSelectMenu(menu){
+    this.selectedMenu = Object.assign({}, menu);
+    console.log(this.selectedMenu);
+  }
+  unselectMenu(){
+    this.selectedMenu=null;
+  }
 }

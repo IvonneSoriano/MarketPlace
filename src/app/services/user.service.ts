@@ -64,7 +64,11 @@ export class UserService {
         this.router.navigate(["/account/login"]);
         break;
     }
+  }
 
+  getAccessToken(){
+    let token = JSON.parse(localStorage.getItem("usuario"))["jwt"];
+    return token;
   }
 
 

@@ -5,6 +5,9 @@ $blue-soft: #48668B;
 $blue: #253B59;
 .info {
     text-align: center;
+    h3{
+        text-transform: capitalize;
+    }
     .circle {
      width: 100%;
      max-height: 200px;
