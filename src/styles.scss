@@ -11,6 +11,7 @@ $open: 'Open Sans', sans-serif;
 $yeseva : 'Yeseva One', cursive;
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,600&family=Yeseva+One&display=swap');
 .btn{
+    outline: none!important;
     padding: 8px 40px;
     @media(max-width:500px){
         padding: 8px 20px;
@@ -38,7 +39,7 @@ label{
     border: none;
     border-bottom: 2px solid $green-light;
     border-radius: 0;
-    outline: none !important;
+    outline: none!important;
     width: 95%;
     padding: 0 .75rem!important;
 }
@@ -57,4 +58,15 @@ label{
 }
 .row{
     margin: 0;
+}
+input, button{
+    outline: none!important;
+}
+svg{
+    width: 30px;
+    height: 30px;
+}
+.icons{
+    width: 30px;
+    height: 30px;
 }

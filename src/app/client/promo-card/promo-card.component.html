@@ -1,0 +1,23 @@
+<div class="info">
+  <h3>{{ promo.name }}</h3>
+  <div class="circle">
+    <img src="assets/images/pupusas.jpg" />
+  </div>
+  <p *ngFor="let detail of promo.promotionDetails">
+      <span>{{ detail.quantity }}</span>
+      {{ detail.nameProduct }}
+  </p>
+</div>
+
+<div class="contometer d-flex">
+  <button class="less" (click)="lessProduct()" [disabled]="cantProducto < 1">
+    -
+  </button>
+  <div class="display">{{ cantProducto }}</div>
+  <button class="pluss" (click)="plussProduct()">+</button>
+</div>
+<div class="total">
+  <span>Total</span>
+  <p class="price">{{ promo.price * cantProducto }}</p>
+</div>
+<button type="button" class="btn btn-primary">Agregar</button>

@@ -1,94 +1,86 @@
-<div class="jumbotron jumbotron-fluid">
-    <h1>Restaurante #1</h1>
-    <!-- Button trigger modal -->
+<div class="row">
+  <div class="col-md-7 col-lg-9 rest">
+    <div class="jumbotron jumbotron-fluid">
+      <h1>Restaurante #1</h1>
+      <!-- Button trigger modal -->
+    </div>
+    <div class="p-20 menu">
+      <h2>Promociones</h2>
+      <div class="row">
+        <div *ngFor="let promo of result['promotions']" class="col-12 col-lg-6
+        mb-5">
+        <a data-toggle="modal" data-target="#modalProduct">
+          <div class="content">
+            <app-promo promo="{{ promo }}"></app-promo>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <h2 class="mb-4">Menu</h2>
+    <div class="row">
+      <div class="col-12 col-lg-6 mb-5">
+        <a data-toggle="modal" data-target="#modalProduct">
+          <div class="content">
+            <app-product></app-product>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-lg-6 mb-5">
+        <a data-toggle="modal" data-target="#modalProduct">
+          <div class="content">
+            <app-product></app-product>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-lg-6 mb-5">
+        <a data-toggle="modal" data-target="#modalProduct">
+          <div class="content">
+            <app-product></app-product>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-lg-6 mb-5">
+        <a data-toggle="modal" data-target="#modalProduct">
+          <div class="content">
+            <app-product></app-product>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="p-20 menu">
-  <h2>Promociones</h2>
-  <div class="row">
-
-     <div class="col-12 col-lg-6">
-        <a data-toggle="modal" data-target="#modalProduct">
-      <div class="content">
-        <app-promo></app-promo>
-      </div>
-    </a>
-    </div>
-
-       <div class="col-12 col-lg-6">
-        <a data-toggle="modal" data-target="#modalProduct">
-      <div class="content">
-        <app-promo></app-promo>
-      </div>
-    </a>
-    </div>
-
-  </div>
-  <h2 class="mb-4">Menu</h2>
-  <div class="row">
-    <div class="col-12 col-md-6 col-lg-4 mb-5">
-        <a data-toggle="modal" data-target="#modalProduct">
-      <div class="content">
-        <app-product></app-product>
-      </div>
-    </a>
-    </div>
-
-     <div class="col-12 col-md-6 col-lg-4">
-        <a data-toggle="modal" data-target="#modalProduct">
-      <div class="content">
-        <app-product></app-product>
-      </div>
-    </a>
-    </div>
-
-       <div class="col-12 col-md-6 col-lg-4">
-        <a data-toggle="modal" data-target="#modalProduct">
-      <div class="content">
-        <app-product></app-product>
-      </div>
-    </a>
-    </div>
-
-       <div class="col-12 col-md-6 col-lg-4">
-        <a data-toggle="modal" data-target="#modalProduct">
-      <div class="content">
-        <app-product></app-product>
-      </div>
-    </a>
-    </div>
-  </div>
+<div class="d-none d-md-block col-md-5 col-lg-3 ticket">
+  <app-ticket></app-ticket>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-labelledby="modalProductLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalProductLabel">Nombre de Comida</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="info">
-            <h3>Titulo de comida</h3>
-            <div class="circle">
-            <img src="assets/images/pupusas.jpg">
-          </div>
-          </div>
-          <div class="contometer d-flex">
-            <button class="less" (click)="lessProduct()" [disabled]="cantProducto<1">-</button>
-            <div class="display">{{ cantProducto }}</div>
-            <button class="pluss" (click)="plussProduct()">+</button>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <div class="total">
-            <span>Total</span>
-            <p class="price">$42.00</p>
-          </div>
-          <button type="button" class="btn btn-primary">Agregar</button>
-        </div>
+<div
+  class="modal fade"
+  id="modalProduct"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalProductLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="close-button">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-product-card></app-product-card>
       </div>
     </div>
   </div>
+</div>

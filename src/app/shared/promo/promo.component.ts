@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { PromotionInterface } from '../../model/promotion.interface';
 
 @Component({
   selector: 'app-promo',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PromoComponent implements OnInit {
 
+@Input() promo: PromotionInterface;
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.promo);
   }
 
 }

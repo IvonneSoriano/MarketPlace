@@ -24,6 +24,16 @@ export class RestaurantPageComponent implements OnInit {
       },
       {
         productName:"pupusa de queso",
+        unitaryPrice:0.40,
+        productCategory:""
+      },
+      {
+        productName:"pupusa de frijol con queso",
+        unitaryPrice:0.35,
+        productCategory:""
+      },
+      {
+        productName:"pupusa revuelta",
         unitaryPrice:0.35,
         productCategory:""
       }
@@ -43,6 +53,20 @@ export class RestaurantPageComponent implements OnInit {
             "quantity":1
           }
         ]	
+      },
+      {
+        name:"promoción cheros",
+        "price":3.5,
+        promotionDetails:[
+          {
+            "nameProduct":"Hot Dogs",
+            "quantity":2
+          },
+          {
+            "nameProduct":"Coca cola 1L",
+            "quantity":1
+          }
+        ]	
       }
     
     ]
@@ -51,20 +75,12 @@ export class RestaurantPageComponent implements OnInit {
   public menus =[{
 
   }];
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit(): void {
+    console.log(this.result["promotions"]);
   }
-  //Metodo para sumar Cantidad de producto
-  plussProduct(){
-    this.cantProducto++;
-  }
-  //Metodo para sumar Cantidad de producto
-  lessProduct(){
-    if(this.cantProducto >1){
-      this.cantProducto--;
-    }
-    
-  }
+
 
 }

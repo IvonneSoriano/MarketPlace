@@ -1,5 +1,7 @@
 .container-fluid {
     height: 100vh;
+    display: flex;
+    align-items: center;
     .images {
         display: flex;
         align-items: center;

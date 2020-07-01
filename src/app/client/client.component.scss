@@ -1,4 +1,21 @@
-.container-fluid{
+.container-fluid {
     margin: 0px;
     padding: 0px;
+
+    .nav {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        display: block;
+        z-index: 30;
+        background-color: white;
+        // box-shadow: 2px 0px 10px rgba(0,0,0,0.09);
+    }
+    .content{
+        margin-top:73px;
+        // max-height: calc(100vh - 121px);
+    }
+    .foot{
+display: none;
+    }
 }

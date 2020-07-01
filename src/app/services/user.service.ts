@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.prod';
 import { UserInterface} from './../model/user.interface';
 import { ErrorRegisterInterface } from './../model/errorRegister.interface'
 import { UserCredentials } from './../model/userCredentials.interface'
@@ -7,6 +8,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router'
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +16,7 @@ export class UserService {
 
   //urlRegister = "http://localhost:8080/signup/register";
   urlRegister = "https://pipeline-inwshop.herokuapp.com/account/register";
-  urlLogin = "https://inw-login.herokuapp.com/login";
+  urlLogin = environment.login+"/login";
 
   constructor(private http:HttpClient, private router:Router) { }
 

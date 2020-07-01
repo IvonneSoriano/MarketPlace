@@ -1,0 +1,17 @@
+<div class="info">
+    <h3>Titulo de comida</h3>
+    <div class="circle">
+    <img src="assets/images/pupusas.jpg">
+  </div>
+  </div>
+     
+  <div class="contometer d-flex">
+    <button class="less" (click)="lessProduct()" [disabled]="cantProducto<1">-</button>
+    <div class="display">{{ cantProducto }}</div>
+    <button class="pluss" (click)="plussProduct()">+</button>
+  </div>
+  <div class="total">
+    <span>Total</span>
+    <p class="price">$42.00</p>
+  </div>
+  <button type="button" class="btn btn-primary">Agregar</button>
