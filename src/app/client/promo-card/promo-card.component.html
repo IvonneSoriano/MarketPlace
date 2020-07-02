@@ -3,10 +3,12 @@
   <div class="circle">
     <img src="assets/images/pupusas.jpg" />
   </div>
+  <div class="desc" *ngIf="description">
   <p *ngFor="let detail of description">
-      <span>{{ detail.quantity }}</span>
-      {{ detail.nameProduct }}
+      <span>{{ detail.cant}}</span>
+      {{ detail.name }}
   </p>
+</div>
 </div>
 
 <div class="contometer d-flex">
@@ -16,8 +18,10 @@
   <div class="display">{{ cantProducto }}</div>
   <button class="pluss" (click)="plussProduct()">+</button>
 </div>
-<div class="total">
-  <span>Total</span>
-  <p class="price">{{ price * cantProducto }}</p>
+<div class="d-flex justify-content-between align-items-center">
+  <div class="total">
+    <span>Total</span>
+    <p class="price">{{ price * cantProducto | currency}}</p>
+  </div>
+  <button type="button" class="btn btn-primary">Agregar</button>
 </div>
-<button type="button" class="btn btn-primary">Agregar</button>

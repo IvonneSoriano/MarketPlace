@@ -6,13 +6,13 @@
     </div>
     <div class="p-20 menu" *ngIf="haveMenu; else noMenu">
       <div *ngIf="promotions">
-        <h2>Promociones</h2>
+        <h2 class="">Promociones</h2>
         <div class="row">
           <div
             *ngFor="let promo of promotions"
             class="col-12 col-lg-6 mb-5"
           >
-            <a data-toggle="modal" data-target="#modalProduct">
+            <a data-toggle="modal" data-target="#modalProduct" (click)="preSelectPromo(promo)">
               <div class="content">
                 <app-promo name="{{ promo['name'] }}" price="{{ promo['totalPrice']}}" id="{{promo['id']}}"></app-promo>
               </div>
@@ -23,7 +23,7 @@
 
       <div *ngIf="menus">
 
-        <h2 class="mb-4">Menu</h2>
+        <h2 class="">Menu</h2>
 
         <div class="row">
 
@@ -50,9 +50,9 @@
     <app-ticket></app-ticket>
   </div>
 
-  <!-- Modal -->
+  <!-- Modal PRODUCTOS -->
   <div
-  *ngIf="selectedMenu"
+  *ngIf="selectedMenu || selectedPromo"
     class="modal fade"
     id="modalProduct"
     tabindex="-1"
@@ -74,7 +74,10 @@
           </button>
         </div>
         <div class="modal-body">
-          <app-product-card id="{{ selectedMenu['id'] }}" price="{{ selectedMenu['unitaryPrice'] }}" name="{{ selectedMenu['productName'] }}" ></app-product-card>
+          <app-product-card *ngIf="selectedMenu; else ModalPromo" id="{{ selectedMenu['id'] }}" price="{{ selectedMenu['unitaryPrice'] }}" name="{{ selectedMenu['productName'] }}" ></app-product-card>
+          <ng-template #ModalPromo>
+            <app-promo-card id="{{selectedPromo['id']}}" name="{{selectedPromo['name']}}" price="{{selectedPromo['totalPrice']}}"></app-promo-card>
+          </ng-template>
         </div>
       </div>
     </div>

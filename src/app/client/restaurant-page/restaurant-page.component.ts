@@ -18,6 +18,7 @@ export class RestaurantPageComponent implements OnInit {
   public haveMenu: boolean = false;
   public promotions: [];
   public selectedMenu: ProductInterface;
+  public selectedPromo;
   public restaurantId;
   constructor(private restaurantService: RestaurantService, private route: ActivatedRoute) {
     route.params.subscribe(params => {
@@ -70,7 +71,12 @@ export class RestaurantPageComponent implements OnInit {
     this.selectedMenu = Object.assign({}, menu);
     console.log(this.selectedMenu);
   }
+  preSelectPromo(promo) {
+    this.selectedPromo = Object.assign({}, promo);
+    console.log(this.selectedPromo);
+  }
   unselectMenu() {
     this.selectedMenu = null;
+    this.selectedPromo = null;
   }
 }
