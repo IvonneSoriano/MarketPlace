@@ -1,10 +1,15 @@
+import { NumberValueAccessor } from '@angular/forms'
+
 export interface PromotionInterface{
     id?: number;
     name: string;
-    promotionDetails:[{
+    shopId?: number;
+    menuId?: number;
+    promotionDetails?:[{
         "nameProduct":string;
         "quantity": number;
     }];
-    "price": number;
+    totalPrice: number;
+    status: number;
 }
 

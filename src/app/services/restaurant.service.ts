@@ -33,8 +33,8 @@ export class RestaurantService {
       return this.http.get<any>(url, { headers });
   }
 
-  getPromotions(shopId:number):Observable<any>{
-    let url = this.urlPromotion + `/findmany/${shopId}`;
+  getPromotions(menuId:number):Observable<any>{
+    let url = this.urlPromotion + `/findmany/${menuId}`;
     const headers = new HttpHeaders({
       'Authorization': 'Bearer '+ this.userService.getAccessToken()
     });

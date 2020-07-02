@@ -1,20 +1,20 @@
 <div class="row">
   <div class="col-md-7 col-lg-9 rest">
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid" style=" background-image: url('assets/images/wood.jpg')">
       <h1>Restaurante #1</h1>
       <!-- Button trigger modal -->
     </div>
-    <div class="p-20 menu">
+    <div class="p-20 menu" *ngIf="haveMenu; else noMenu">
       <div *ngIf="promotions">
         <h2>Promociones</h2>
         <div class="row">
           <div
-            *ngFor="let promo of promotions['promotions']"
+            *ngFor="let promo of promotions"
             class="col-12 col-lg-6 mb-5"
           >
             <a data-toggle="modal" data-target="#modalProduct">
               <div class="content">
-                <app-promo promo="{{ promo }}"></app-promo>
+                <app-promo name="{{ promo['name'] }}" price="{{ promo['totalPrice']}}" id="{{promo['id']}}"></app-promo>
               </div>
             </a>
           </div>
@@ -38,6 +38,13 @@
         </div>
       </div>
     </div>
+    <ng-template #noMenu>
+      <div class="col-12 noMenu">
+      <h3>Este restaurante no cuenta con menu!</h3>
+      <p>Lo sentimos!</p>
+      <img src="assets/images/comingSoon.jpg">
+    </div>
+    </ng-template>
   </div>
   <div class="d-none d-md-block col-md-5 col-lg-3 ticket">
     <app-ticket></app-ticket>

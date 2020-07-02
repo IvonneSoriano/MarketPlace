@@ -16,19 +16,21 @@ export class ProductCardComponent implements OnInit {
   public cantProducto = 1;
 
   ngOnInit(): void {
-    this.total=this.price;
+    this.total = this.price;
   }
   //Metodo para sumar Cantidad de producto
-  plussProduct(){
-    this.cantProducto++;
-    this.total=this.price*this.cantProducto;
-  }
-  //Metodo para sumar Cantidad de producto
-  lessProduct(){
-    if(this.cantProducto >1){
-      this.cantProducto--;
-      this.total=this.price*this.cantProducto;
+  plussProduct() {
+    if (this.cantProducto <= 10) {
+      this.cantProducto++;
+      this.total = this.price * this.cantProducto;
     }
-    
+  }
+  //Metodo para sumar Cantidad de producto
+  lessProduct() {
+    if (this.cantProducto > 1) {
+      this.cantProducto--;
+      this.total = this.price * this.cantProducto;
+    }
+
   }
 }

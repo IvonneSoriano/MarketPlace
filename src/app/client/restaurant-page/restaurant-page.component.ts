@@ -1,7 +1,7 @@
 import { ProductInterface } from './../../model/product.interface';
 import { RestaurantService } from './../../services/restaurant.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-restaurant-page',
@@ -14,13 +14,14 @@ export class RestaurantPageComponent implements OnInit {
   //Este es el resultado
   @ViewChild('modalProduct') modal: any;
   public cantProducto = 1;
-  public menus:[];
-  public promotions:[];
+  public menus: [];
+  public haveMenu: boolean = false;
+  public promotions: [];
   public selectedMenu: ProductInterface;
   public restaurantId;
-  constructor(private restaurantService: RestaurantService, private route: ActivatedRoute) { 
+  constructor(private restaurantService: RestaurantService, private route: ActivatedRoute) {
     route.params.subscribe(params => {
-      this.restaurantId =  params.restaurant;
+      this.restaurantId = params.restaurant;
     });
   }
 
@@ -28,31 +29,48 @@ export class RestaurantPageComponent implements OnInit {
     this.getMenu();
   }
 
-  getMenu(){
+  getMenu() {
     console.log(`Este es el ide de restaurante ${this.restaurantId}`);
-    this.restaurantService.getDailyMenu(this.restaurantId).subscribe(result=> {
-      let idMenu:number = result["data"]["id"];
+    this.restaurantService.getDailyMenu(this.restaurantId).subscribe(result => {
+      this.haveMenu = true;
+      let idMenu: number = result["data"]["id"];
       console.log(`Este es el id de menu ${idMenu}`);
-      this.restaurantService.getMenuDetail(idMenu).subscribe(data => {
+      this.getPromotions(idMenu);
+      this.getMenuDetail(idMenu);
+    },
+      error => {
+        console.log(error);
+      });
+  }
+
+  getPromotions(menuId: number) {
+    this.restaurantService.getPromotions(menuId)
+      .subscribe(data => {
         console.log(data["data"]);
-        this.menus = data["data"];
+        this.promotions = data["data"];
       },
+        error => {
+          alert("Hay error");
+          console.log(error);
+        })
+  }
+
+  getMenuDetail(menuId: number) {
+    this.restaurantService.getMenuDetail(menuId).subscribe(data => {
+      console.log(data["data"]);
+      this.menus = data["data"];
+    },
       err => {
         alert("Hay un error");
         console.log(err);
       });
-    },
-    error => {
-      alert("Hay error");
-      console.log(error);
-    });
   }
 
-  preSelectMenu(menu){
+  preSelectMenu(menu) {
     this.selectedMenu = Object.assign({}, menu);
     console.log(this.selectedMenu);
   }
-  unselectMenu(){
-    this.selectedMenu=null;
+  unselectMenu() {
+    this.selectedMenu = null;
   }
 }

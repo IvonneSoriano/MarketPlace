@@ -8,8 +8,11 @@ import { PromotionInterface } from '../../model/promotion.interface';
 })
 export class PromoComponent implements OnInit {
 
-@Input() promo: PromotionInterface;
+  @Input() promo: PromotionInterface;
 
+  @Input() price: number;
+  @Input() id: number;
+  @Input() name: string;
   constructor() { }
 
   ngOnInit(): void {

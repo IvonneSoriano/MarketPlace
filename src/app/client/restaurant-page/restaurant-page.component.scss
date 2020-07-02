@@ -7,10 +7,42 @@ $blue: #253B59;
     min-height: 350px;
     display: flex;
     justify-content: center;
+    background-size: cover;
+    background-position: right;
+    background-attachment: fixed;
     align-items: center;
+    position: relative;
+    &::after{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color:$dark-purple , $alpha:0.2);
+    }
+    h1{
+        color: white;
+        font-weight: bold;
+        z-index: 2;
+    }  
 }
 a{
     cursor: pointer;
+}
+.noMenu{
+    text-align: center;
+    h3{
+        color: $dark-purple;
+    }
+    p{
+        color: $blue-soft;
+        font-weight: bold;
+    }
+    img{
+        max-width: 100%;
+        height: 400px;
+    }
 }
 .modal{
     .close-button{

@@ -7,7 +7,10 @@ import { PromotionInterface } from '../../model/promotion.interface';
   styleUrls: ['./promo-card.component.scss']
 })
 export class PromoCardComponent implements OnInit {
-  @Input() promo:PromotionInterface;
+  @Input() name: string;
+  @Input() id: number;
+  @Input() price: number;
+  public description: string;
 
   public cantProducto = 1;
   

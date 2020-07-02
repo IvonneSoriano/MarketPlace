@@ -1,9 +1,9 @@
 <div class="info">
-  <h3>{{ promo.name }}</h3>
+  <h3>{{ name }}</h3>
   <div class="circle">
     <img src="assets/images/pupusas.jpg" />
   </div>
-  <p *ngFor="let detail of promo.promotionDetails">
+  <p *ngFor="let detail of description">
       <span>{{ detail.quantity }}</span>
       {{ detail.nameProduct }}
   </p>
@@ -18,6 +18,6 @@
 </div>
 <div class="total">
   <span>Total</span>
-  <p class="price">{{ promo.price * cantProducto }}</p>
+  <p class="price">{{ price * cantProducto }}</p>
 </div>
 <button type="button" class="btn btn-primary">Agregar</button>
