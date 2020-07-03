@@ -15,7 +15,7 @@ export class RestaurantPageComponent implements OnInit {
   @ViewChild('modalProduct') modal: any;
   public cantProducto = 1;
   public menus: [];
-  public haveMenu: boolean = false;
+  public haveMenu = null;
   public promotions: [];
   public selectedMenu: ProductInterface;
   public selectedPromo;
@@ -33,11 +33,10 @@ export class RestaurantPageComponent implements OnInit {
   getMenu() {
     console.log(`Este es el ide de restaurante ${this.restaurantId}`);
     this.restaurantService.getDailyMenu(this.restaurantId).subscribe(result => {
-      this.haveMenu = true;
-      let idMenu: number = result["data"]["id"];
-      console.log(`Este es el id de menu ${idMenu}`);
-      this.getPromotions(idMenu);
-      this.getMenuDetail(idMenu);
+      this.haveMenu = result["data"]["id"];
+      console.log(`Este es el id de menu ${this.haveMenu}`);
+      this.getPromotions(this.haveMenu);
+      this.getMenuDetail(this.haveMenu);
     },
       error => {
         console.log(error);

@@ -1,3 +1,4 @@
+import { TicketService } from './../../services/ticket.service';
 import { ProductInterface } from './../../model/product.interface';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -8,10 +9,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductCardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ticketService: TicketService) { }
   @Input() id: number;
   @Input() name: string;
   @Input() price: number;
+  @Input() menu: number;
 
   public cantProducto = 1;
 
@@ -26,8 +28,11 @@ export class ProductCardComponent implements OnInit {
   //Metodo para sumar Cantidad de producto
   lessProduct() {
     if (this.cantProducto > 1) {
-      this.cantProducto--;    
+      this.cantProducto--;
     }
+  }
 
+  addProduct() {
+    this.ticketService.addProductToList(this.menu, this.id, this.cantProducto, this.name, this.price);
   }
 }

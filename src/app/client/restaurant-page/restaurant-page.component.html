@@ -74,7 +74,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <app-product-card *ngIf="selectedMenu; else ModalPromo" id="{{ selectedMenu['id'] }}" price="{{ selectedMenu['unitaryPrice'] }}" name="{{ selectedMenu['productName'] }}" ></app-product-card>
+          <app-product-card *ngIf="selectedMenu; else ModalPromo" menu="haveMenu" id="{{ selectedMenu['id'] }}" price="{{ selectedMenu['unitaryPrice'] }}" name="{{ selectedMenu['productName'] }}" ></app-product-card>
           <ng-template #ModalPromo>
             <app-promo-card id="{{selectedPromo['id']}}" name="{{selectedPromo['name']}}" price="{{selectedPromo['totalPrice']}}"></app-promo-card>
           </ng-template>

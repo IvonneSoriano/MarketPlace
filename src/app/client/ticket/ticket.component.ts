@@ -1,3 +1,4 @@
+import { TicketService } from './../../services/ticket.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TicketComponent implements OnInit {
 
-  constructor() { }
-  public pedido:any;
-  ngOnInit(): void {
+  public pedido;
+  constructor( private ticketService: TicketService) { 
+    this.showProductList();
   }
+  ngOnInit(): void {
+    this.showProductList();
+  }
+  
+showProductList(){
+  this.pedido = this.ticketService.getProductsList();
+  console.log(this.pedido);
+}
 
 }
