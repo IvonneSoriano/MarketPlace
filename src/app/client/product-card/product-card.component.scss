@@ -48,18 +48,15 @@ $blue: #253B59;
         font-weight: bold;
     }
 }
-.modal-footer{
-    justify-content: space-between;
-    .total{
+.total{
         
-        font-weight: bold;
-        color: $dark-purple;
-        span{
-            display: block;
-            font-size:12px;
-        }
-        .price{
-            font-size: 20px;
-        }
+    font-weight: bold;
+    color: $dark-purple;
+    span{
+        display: block;
+        font-size:12px;
+    }
+    .price{
+        font-size: 20px;
     }
 }

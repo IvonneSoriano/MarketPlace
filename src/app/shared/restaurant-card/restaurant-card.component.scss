@@ -1,0 +1,6 @@
+.card {
+    border: 1px solid rgba(0,0,0,0.05);
+    &:hover {
+        box-shadow: 0 0 14px rgba($color: black, $alpha:0.09);
+    }
+}

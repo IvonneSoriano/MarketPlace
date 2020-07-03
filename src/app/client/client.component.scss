@@ -9,13 +9,18 @@
         display: block;
         z-index: 30;
         background-color: white;
-        // box-shadow: 2px 0px 10px rgba(0,0,0,0.09);
+        transition: box-shadow 0.6s linear;
+        &.active {
+            box-shadow: 2px 0px 14px rgba(0, 0, 0, 0.26);
+        }
     }
-    .content{
-        margin-top:73px;
+
+    .content {
+        margin-top: 73px;
         // max-height: calc(100vh - 121px);
     }
-    .foot{
-display: none;
+
+    .foot {
+        display: none;
     }
 }

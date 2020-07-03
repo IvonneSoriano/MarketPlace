@@ -24,9 +24,13 @@ $blue: #253B59;
     .desc{
         margin-bottom: 25px;
         p{
+            span{
+                font-weight: bold;
+            }
             margin: 0;
         }
     }
+
 }
 .contometer {
     justify-content: center;
@@ -54,8 +58,6 @@ $blue: #253B59;
         font-weight: bold;
     }
 }
-.modal-footer{
-    justify-content: space-between;
     .total{
         
         font-weight: bold;
@@ -67,5 +69,4 @@ $blue: #253B59;
         .price{
             font-size: 20px;
         }
-    }
 }

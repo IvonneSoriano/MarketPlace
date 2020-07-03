@@ -1,3 +1,4 @@
+import { Ticket } from './model/ticket';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -14,7 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ Ticket ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
