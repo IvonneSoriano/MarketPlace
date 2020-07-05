@@ -9,16 +9,35 @@ import { Component, OnInit } from '@angular/core';
 export class TicketComponent implements OnInit {
 
   public pedido;
-  constructor( private ticketService: TicketService) { 
-    this.showProductList();
-  }
+  constructor(private ticketService: TicketService) { }
+
   ngOnInit(): void {
     this.showProductList();
   }
-  
-showProductList(){
-  this.pedido = this.ticketService.getProductsList();
-  console.log(this.pedido);
-}
+
+  showProductList() {
+    this.pedido = this.ticketService.getProductsList();
+    console.log(this.pedido);
+  }
+
+  lessProduct(id:number, cant:number){
+    if(cant>1){  
+    cant--;
+    this.editProduct(id,cant);
+    this.showProductList();
+  }
+  }
+
+  plussProduct(id:number, cant:number){
+    if(cant<10){
+    cant++;
+    this.editProduct(id,cant);
+    this.showProductList();
+  }
+  }
+
+  editProduct(id:number, cant:number){
+    this.ticketService.changeQuantity(id,cant);
+  }
 
 }

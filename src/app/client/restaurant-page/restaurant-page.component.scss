@@ -99,7 +99,7 @@ a {
 .ticket {
     // background-color: pink;
     position: fixed;
-    height: 100vh;
+    height: calc(100vh - 73px);;
     padding: 0;
     right: 0;
 }

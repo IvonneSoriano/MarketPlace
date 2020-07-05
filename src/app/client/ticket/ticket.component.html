@@ -1,35 +1,50 @@
 <div class="ticket">
-<h3>Mi orden <span class="icons"><img class="icons" src="assets/icons/bill.svg" alt=""></span></h3>
-
-<table class="table" *ngIf="pedido.length > 0; else noPedidos">
-    <tbody>
-      <tr *ngFor="let prod of pedido">
-        <td class="remove">
-            <span class="line l1"></span>
-            <span class="line l2"></span>
-        </td>
-        <th scope="row">
-            <input class="" >
-        </th>
-        <td>Mark</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table>
+  <h3>
+    Mi orden
+    <span class="icons"
+      ><img class="icons" src="assets/icons/bill.svg" alt=""
+    /></span>
+  </h3>
+  <div class="order">
+    <table class="table" *ngIf="pedido.length > 0; else noPedidos">
+      <tbody>
+        <tr *ngFor="let prod of pedido">
+          <td class="remove">
+            <span class="line"></span>
+          </td>
+          <th scope="row">
+            <div class="contometer d-flex">
+              <button
+                class="less"
+                (click)="lessProduct(prod['menuDetailId'], prod['quantity'])"
+              >
+                -
+              </button>
+              <div class="display">{{ prod["quantity"] }}</div>
+              <button
+                class="pluss"
+                (click)="plussProduct(prod['menuDetailId'], prod['quantity'])"
+              >
+                +
+              </button>
+            </div>
+            <!-- <input class="edit" type="number" max="10" min="1" value=""> -->
+          </th>
+          <td class="name">{{ prod["name"] }}</td>
+          <td class="price">
+            {{ prod["price"] * prod["quantity"] | currency }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="total">
+    <p class="title">Total</p>
+    <p class="price">$ Price</p>
+  </div>
   <ng-template #noPedidos>
-      <div class="noPedidos">
-      <img src="assets/images/empty.png">
+    <div class="noPedidos">
+      <img src="assets/images/empty.png" />
       <p>Aun no has ordenado nada :(</p>
     </div>
   </ng-template>

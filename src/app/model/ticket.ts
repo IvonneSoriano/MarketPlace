@@ -8,7 +8,7 @@ export class Ticket {
         "quantity": number,
         "menuDetailId": number
     }[] = [];
-    public restuarantId: number = null;
+    public restaurantId: number = null;
     public productsDetail:{
         "quantity": number,
         "menuDetailId": number,

@@ -1,3 +1,9 @@
+$green-light: #96D9C6;
+$green: #24A6A6;
+$dark-purple: #111440;
+$blue-soft: #48668B;
+$blue: #253B59;
+
 nav {
     display: flex;
     flex-wrap: wrap;
@@ -43,20 +49,112 @@ nav {
         }
     }
 
-    @media (min-width:992px) {
-        .col2 {
-            flex:1;
-            .navbar-nav{
-            justify-content: space-between;
-            align-items: center;
+    .navbar-nav {
+
+        .notif,
+        .account {
             display: flex;
-            width: 100%;
 
             p {
-                margin: 0;
+                font-weight: bold;
+                font-size: 15px;
+                color: $blue;
             }
         }
+
+        .account {
+            display: none;
         }
     }
 
+    .x {
+        position: relative;
+        width: 30px;
+        height: 30px;
+
+        .line {
+            width: 30px;
+            height: 5px;
+            border: none;
+            display: block;
+            background-color: $dark-purple;
+            position: absolute;
+            transition: all 0.04s linear;
+
+            &.l1 {
+                top: 0;
+                transform: rotate(0deg) translate(0px, 0px);
+            }
+
+            &.l2 {
+                top: 10px;
+                opacity: 1;
+            }
+
+            &.l3 {
+                top: 20px;
+                transform: rotate(0deg) translate(0px, 0px);
+            }
+        }
+
+        &.active {
+            .line {
+                &.l1 {
+                    transform: rotate(45deg) translate(10px, 10px);
+                }
+
+                &.l2 {
+                    opacity: 0;
+                }
+
+                &.l3 {
+                    transform: rotate(-45deg) translate(4px, -3px);
+                }
+            }
+        }
+    }
+
+    @media (min-width:992px) {
+        .col2 {
+            flex: 1;
+
+            .navbar-nav {
+                justify-content:flex-end;
+                align-items: center;
+                display: flex;
+                width: 100%;
+
+                p {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    @media (max-width:992px) {
+        .navbar-nav {
+            &>div {
+                padding: 10px;
+            }
+
+            .account {
+                display: flex;
+            }
+
+            .notif,
+            .account {
+                p {
+                    display: inline-block;
+                    margin-left: 20px;
+                }
+            }
+
+            .change {
+                button {
+                    display: block;
+                    width: 100%;
+                }
+            }
+        }
+    }
 }
