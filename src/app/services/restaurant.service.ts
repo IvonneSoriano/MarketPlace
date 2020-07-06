@@ -11,10 +11,17 @@ export class RestaurantService {
 
   urlMenu = environment.restaurant + "/menu";
   urlPromotion = environment.restaurant + "/promotion";
-
+  urlRestaurants = environment.restaurant + "/shop/findmany";
 
   constructor(private http: HttpClient, private userService: UserService) { }
 
+  getAllRestaurants(){
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.userService.getAccessToken()
+    });
+    return this.http.post(this.urlRestaurants, { headers });
+  }
+  
   getDailyMenu(shopId: number) {
     let url = this.urlMenu + `/find/${shopId}`;
     const headers = new HttpHeaders({
