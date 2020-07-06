@@ -13,7 +13,7 @@ import { Router } from '@angular/router'
 export class UserService {
 
   //urlRegister = "http://localhost:8080/signup/register";
-  urlRegister = "https://pipeline-inwshop.herokuapp.com/account/register";
+  urlRegister = "https://pipeline-inwshop.herokuapp.com/signup/register";
   urlLogin = "https://inw-login.herokuapp.com/login";
 
   constructor(private http:HttpClient, private router:Router) { }
