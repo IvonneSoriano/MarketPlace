@@ -1,7 +1,7 @@
 import { ProductInterface } from './../model/product.interface';
 import { Ticket } from './../model/ticket';
 import { Injectable } from '@angular/core';
-import { iif } from 'rxjs';
+import { iif,Observable,Subject } from 'rxjs';
 
 
 @Injectable({
@@ -9,6 +9,8 @@ import { iif } from 'rxjs';
 })
 export class TicketService {
 
+  private $addProduct = new Subject<any>();
+  private totalPrice:number = 0;
   constructor(private ticket: Ticket) { }
 
   //Metodo principal para añadir los productos a la lista
@@ -34,20 +36,56 @@ export class TicketService {
       this.addProduct(productId, cant,name, price);
     }
   }
-  addProduct(productId: number, cant: number, name:string, price: number) {
-    let prod = {
-      "quantity": cant,
-      "menuDetailId": productId
-    };
-    let prodDetail = {
-      "quantity": cant,
-      "menuDetailId": productId,
-      "name" : name,
-      "price": price
-    };
-    this.ticket.products.push(prod);
-    this.ticket.productsDetail.push(prodDetail);
-    this.setSessionData();
+  addProduct(productId: number, cant: number, name:string, price: number){
+
+    let update:boolean = false;
+
+    this.ticket.products.forEach(prod => {
+      if(prod.menuDetailId == productId){
+        update = true;
+      }
+    });
+
+    if(update){
+      this.updateProduct(productId,cant)
+    }
+    else{
+      let prod = {
+        "quantity": cant,
+        "menuDetailId": productId
+      };
+      let prodDetail = {
+        "quantity": cant,
+        "menuDetailId": productId,
+        "name" : name,
+        "price": price
+      };
+      this.ticket.products.push(prod);
+      this.ticket.productsDetail.push(prodDetail);
+      this.setSessionData();
+      this.$addProduct.next();
+  }
+  }
+
+  addProductObs() : Observable<any>{
+    return this.$addProduct.asObservable();
+  }
+
+  updateProduct(productId:number, cant:number){
+    this.ticket.products.forEach(prod => {
+      if(prod.menuDetailId == productId){
+        if(prod.quantity + cant < 11)
+          prod.quantity = prod.quantity + cant;
+      }
+    });
+    this.ticket.productsDetail.forEach(prod => {
+      if(prod.menuDetailId == productId){
+        if(prod.quantity + cant < 11)
+          prod.quantity = prod.quantity + cant;
+      }
+    });
+   this.setSessionData();
+   this.$addProduct.next();
   }
 
   changeQuantity(productId:number, cant:number){
@@ -106,18 +144,39 @@ export class TicketService {
     console.log(`Los produtcos son: ${this.ticket.products}`);
   }
 
-  
+
   removeProduct(productId:number){
     const index:number = this.ticket.products.findIndex(prod => prod.menuDetailId == productId);
     console.log(index);
     console.log(this.ticket.products.length);
     this.ticket.products.splice(index, 1);
     this.ticket.productsDetail.splice(index, 1);
+    this.setProducts();
+    this.setProductsDetail();
+    this.getProducts();
+    if(this.ticket.products.length == 0){
+      this.clearProductList()
+    }
     return true;
   }
 
   getProductsList(){
     this.getSessionData();
     return this.ticket.productsDetail;
+  }
+
+  setTotalPrice(totalPrice:number){
+    this.totalPrice = totalPrice;
+  }
+
+  getTotalPrice(): number{
+    return this.totalPrice;
+  }
+
+  clearProductList(){
+    localStorage.removeItem("products");
+    localStorage.removeItem("productsDetail");
+    localStorage.removeItem("restaurantId");
+    this.$addProduct.next();
   }
 }

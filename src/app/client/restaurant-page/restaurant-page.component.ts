@@ -1,5 +1,6 @@
 import { ProductInterface } from './../../model/product.interface';
 import { RestaurantService } from './../../services/restaurant.service';
+import { TicketService } from './../../services/ticket.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -20,7 +21,8 @@ export class RestaurantPageComponent implements OnInit {
   public selectedMenu: ProductInterface;
   public selectedPromo;
   public restaurantId;
-  constructor(private restaurantService: RestaurantService, private route: ActivatedRoute) {
+  public totalPrice = 0;
+  constructor(private restaurantService: RestaurantService, private route: ActivatedRoute, private ticketService: TicketService) {
     route.params.subscribe(params => {
       this.restaurantId = params.restaurant;
     });
@@ -77,5 +79,15 @@ export class RestaurantPageComponent implements OnInit {
   unselectMenu() {
     this.selectedMenu = null;
     this.selectedPromo = null;
+  }
+
+  realizarPedido(){
+    let rp = confirm("¿Está seguro de realizar la compra?")
+
+    if(rp){
+      alert("Gracias por realizar su compra en nuestra app" + "\n" +"Su pedido llegará pronto")
+      this.ticketService.clearProductList();
+      window.location.reload();
+    }
   }
 }

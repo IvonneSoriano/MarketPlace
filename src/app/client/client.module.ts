@@ -9,10 +9,11 @@ import { RestaurantPageComponent } from './restaurant-page/restaurant-page.compo
 import { TicketComponent } from './ticket/ticket.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { PromoCardComponent } from './promo-card/promo-card.component';
+import { BuyCardComponent } from './buy-card/buy-card.component';
 
 
 @NgModule({
-  declarations: [ClientComponent, DashboardComponent, RestaurantPageComponent, TicketComponent, ProductCardComponent, PromoCardComponent],
+  declarations: [ClientComponent, DashboardComponent, RestaurantPageComponent, TicketComponent, ProductCardComponent, PromoCardComponent, BuyCardComponent],
   imports: [
     CommonModule,
     ClientRoutingModule,

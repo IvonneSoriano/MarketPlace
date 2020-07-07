@@ -10,7 +10,7 @@
       <tbody>
         <tr *ngFor="let prod of pedido">
           <td class="remove">
-            <span class="line"></span>
+              <span class="line" style="cursor: pointer;" (click)="removeProduct(prod['menuDetailId'])"></span>
           </td>
           <th scope="row">
             <div class="contometer d-flex">
@@ -40,12 +40,25 @@
   </div>
   <div class="total">
     <p class="title">Total</p>
-    <p class="price">$ Price</p>
+    <p class="price">{{totalPrice | currency}}</p>
+    <p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#buyCardModal"
+      [disabled] = "enableBuyButton()"
+      (click)="setTotalPrice()">
+      Comprar
+    </button></p>
   </div>
+
   <ng-template #noPedidos>
     <div class="noPedidos">
       <img src="assets/images/empty.png" />
       <p>Aun no has ordenado nada :(</p>
     </div>
   </ng-template>
+
 </div>
+
+
+
+
+
+

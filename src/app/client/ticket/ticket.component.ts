@@ -1,5 +1,6 @@
 import { TicketService } from './../../services/ticket.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-ticket',
@@ -9,19 +10,29 @@ import { Component, OnInit } from '@angular/core';
 export class TicketComponent implements OnInit {
 
   public pedido;
-  constructor(private ticketService: TicketService) { }
+  public totalPrice:number = 0;
+  public subs: Subscription;
+  constructor(private ticketService: TicketService) {
+    this.subs = this.ticketService.addProductObs().subscribe(data =>{
+      this.showProductList();
+    })
+  }
 
   ngOnInit(): void {
     this.showProductList();
   }
 
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
+
   showProductList() {
     this.pedido = this.ticketService.getProductsList();
-    console.log(this.pedido);
+    this.totalPriceCalculate()
   }
 
   lessProduct(id:number, cant:number){
-    if(cant>1){  
+    if(cant>1){
     cant--;
     this.editProduct(id,cant);
     this.showProductList();
@@ -38,6 +49,26 @@ export class TicketComponent implements OnInit {
 
   editProduct(id:number, cant:number){
     this.ticketService.changeQuantity(id,cant);
+  }
+
+  removeProduct(id:number){
+    this.ticketService.removeProduct(id);
+    this.showProductList();
+  }
+
+  totalPriceCalculate(){
+    this.totalPrice = 0
+    this.pedido.forEach(prod => {
+      this.totalPrice = this.totalPrice + (prod["price"] * prod["quantity"]);
+    });
+  }
+
+  enableBuyButton(): boolean{
+    return !(this.totalPrice > 0);
+  }
+
+  setTotalPrice(){
+    this.ticketService.setTotalPrice(this.totalPrice);
   }
 
 }
