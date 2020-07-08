@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild, Renderer2 } from '@angular/core';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -8,7 +9,7 @@ import { Component, OnInit, ElementRef, ViewChild, Renderer2 } from '@angular/co
 export class NavComponent implements OnInit {
 
   @ViewChild("navIcon", { static: false }) navIcon: ElementRef;
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2, private router: Router) { }
 
   private count = 0;
 
@@ -26,5 +27,8 @@ export class NavComponent implements OnInit {
       this.renderer.addClass(this.navIcon.nativeElement, "active");
     }
     
+  }
+  goToDash(){
+    this.router.navigate(['client']);
   }
 }

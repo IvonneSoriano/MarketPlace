@@ -125,6 +125,10 @@ $blue: #253B59;
     }
 }
 
+.menu {
+    display: none;
+}
+
 .contometer {
     justify-content: center;
 
@@ -152,5 +156,48 @@ $blue: #253B59;
         color: white;
         font-size: 16px;
         font-weight: bold;
+    }
+}
+
+@media(max-width:768px) {
+    .menu {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 10px 0;
+
+        a {
+            font-size: 12px;
+            color: white;
+            text-decoration: none;
+
+            &:hover {
+                color: $green-light;
+            }
+
+            img {
+                width: 20px;
+                height: 20px;
+                vertical-align: bottom;
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .ticket {
+        padding: 30px 20px;
+        background-color: $dark-purple;
+        color: white;
+        position: relative;
+        height: 100vh;
+
+
+        .order {
+            max-height: 300px;
+        }
+
+        .total {
+            padding: 8px 0;
+        }
     }
 }

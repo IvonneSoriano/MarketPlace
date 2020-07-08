@@ -1,13 +1,14 @@
 
 <div class="row mb-3">
-  <div class="col-sm-12 col-lg-6 text-center mb-2" *ngFor="let transporter of transporters">
+  <div class="col-sm-12 col-md-6 col-lg-3 text-center mb-2" *ngFor="let transporter of transporters">
     <div class="card w-100">
+      <div class="img">
       <img
         class="card-img-top"
-        style="max-height: 350px; object-fit: cover; cursor: pointer;"
         [src]= "transporter['imagen']"
         alt="Card image cap"
         (click) = "setTransporter(transporter['nombre'],transporter['precio'])">
+      </div>
       <div class="card-body">
         <h5 class="card-title">{{transporter['nombre']}}</h5>
         <p class="card-text">
@@ -22,10 +23,10 @@
 
 <div class="row my-3 text-center">
   <div class="col-sm-12">
-    Subtotal por pedidos: {{getSubTotalPrice() | currency}}<br>
-    Subtotal transporte: {{getSubTotalTransporte() | currency}} ({{getTransporter()}})<br>
+    <p>Subtotal por pedidos: <span>{{getSubTotalPrice() | currency}}</span></p>
+    <p>Subtotal transporte: <span>{{getSubTotalTransporte() | currency}} ({{getTransporter()}})</span></p>
     ---------------------------<br>
-    <b>Total : {{getTotal()}}</b>
+    <b>Total : {{getTotal() | currency}}</b>
   </div>
 </div>
 

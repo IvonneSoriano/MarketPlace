@@ -23,4 +23,10 @@
     .foot {
         display: none;
     }
+    @media(max-width:768px){
+        .content {
+            margin-top: 110px;
+            // max-height: calc(100vh - 121px);
+        }
+    }
 }

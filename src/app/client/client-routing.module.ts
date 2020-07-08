@@ -1,3 +1,4 @@
+import { TicketComponent } from './ticket/ticket.component';
 import { RestaurantPageComponent } from './restaurant-page/restaurant-page.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
@@ -5,10 +6,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ClientComponent } from './client.component';
 
-const routes: Routes = [{ path: '', component: ClientComponent, children:[
+const routes: Routes = [
+  { path: 'ticket', component: TicketComponent },
+  { path: '', component: ClientComponent, children:[
   { path: '', component: DashboardComponent  },
-  { path: ':restaurant', component: RestaurantPageComponent }
+  { path: ':restaurant', component: RestaurantPageComponent },
 ] }
+
 ];
 
 @NgModule({
