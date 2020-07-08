@@ -10,52 +10,78 @@ $blue: #253B59;
     color: white;
     position: relative;
     height: 100%;
-    .table td, .table th {
-        border:none!important;
+
+    .table td,
+    .table th {
+        border: none !important;
     }
-    .order{
+
+    .order {
         max-height: 500px;
         overflow-y: scroll;
-        &::-webkit-scrollbar{
-            width: 8px;     /* Tamaño del scroll en vertical */
+
+        &::-webkit-scrollbar {
+            width: 2px;
+            /* Tamaño del scroll en vertical */
             background-color: none;
         }
+
         &::-webkit-scrollbar-thumb {
             background: rgba($color:$blue-soft, $alpha:0.9);
             border-radius: 4px;
+            width: 2px;
         }
+
         &::-webkit-scrollbar-thumb:hover {
             background: $blue-soft;
         }
     }
-    .total{
+
+    .total {
         position: absolute;
         bottom: 0;
-        display: flex;
         width: calc(100% - 40px);
-        justify-content: space-between;
-        .title{
-            text-transform: uppercase;
-            display: block;
-            color: rgba(255,255,255,0.5);
-            font-size: 12px;
+        padding: 10px 0;
+
+        .info {
+            display: flex;
+            justify-content: space-between;
+
+            .title {
+                text-transform: uppercase;
+                display: block;
+                color: rgba(255, 255, 255, 0.5);
+                font-size: 12px;
+            }
+
+            .price {
+                color: white;
+                font-size: 18px;
+            }
         }
-        .price{
-            color: white;
-            font-size: 18px;
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
         }
     }
+
     .table {
         color: white;
         margin: 20px 0;
-        tr{
-            border:none;
-            border-bottom:  1px solid #dee2e6;;
+
+        tr {
+            border: none;
+            border-bottom: 1px solid #dee2e6;
+            ;
         }
-        .remove{
+
+        .remove {
             position: relative;
+
             // background-color: white;
-            .line{
+            .line {
                 width: 60%;
                 height: 5px;
                 border-radius: 8px;
@@ -66,28 +92,34 @@ $blue: #253B59;
                 transform: translate(-50%, -50%);
                 transition: transform 0.05s linear;
             }
-            &:hover{
-                .line{
+
+            &:hover {
+                .line {
                     background-color: silver;
                 }
             }
         }
-        .edit{
+
+        .edit {
             width: 100%;
         }
-        .name{
+
+        .name {
             padding: 10px 0;
             font-size: 12px;
         }
-        
+
     }
-    .noPedidos{
+
+    .noPedidos {
         text-align: center;
         margin: 40px 0;
-        p{
+
+        p {
             color: $green-light;
         }
-        img{
+
+        img {
             max-width: 100%;
         }
     }
@@ -95,7 +127,8 @@ $blue: #253B59;
 
 .contometer {
     justify-content: center;
-    &>button{
+
+    &>button {
         border: none;
         outline: none;
         height: 25px;
@@ -104,17 +137,19 @@ $blue: #253B59;
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: rgba($color:$blue-soft, $alpha:0.8);    
+        background-color: rgba($color:$blue-soft, $alpha:0.8);
         color: $dark-purple;
         font-size: 18px;
         font-weight: bold;
-        &:hover{
+
+        &:hover {
             background-color: rgba($color:$blue-soft, $alpha:1);
         }
     }
-    .display{
+
+    .display {
         margin: 0 10px;
-        color:white;
+        color: white;
         font-size: 16px;
         font-weight: bold;
     }

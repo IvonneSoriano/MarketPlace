@@ -3,4 +3,11 @@
     &:hover {
         box-shadow: 0 0 14px rgba($color: black, $alpha:0.09);
     }
+    .img{
+        max-height: 215px;
+        overflow: hidden;
+    }
+    h3{
+        font-size: 1.35rem;
+    }
 }

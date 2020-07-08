@@ -5,8 +5,9 @@
       ><img class="icons" src="assets/icons/bill.svg" alt=""
     /></span>
   </h3>
+  <div class="pedidos"  *ngIf="pedido.length > 0; else noPedidos">
   <div class="order">
-    <table class="table" *ngIf="pedido.length > 0; else noPedidos">
+    <table class="table">
       <tbody>
         <tr *ngFor="let prod of pedido">
           <td class="remove">
@@ -39,14 +40,19 @@
     </table>
   </div>
   <div class="total">
+    <div class="info">
     <p class="title">Total</p>
     <p class="price">{{totalPrice | currency}}</p>
-    <p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#buyCardModal"
+  </div>
+  <div class="buttons">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#buyCardModal"
       [disabled] = "enableBuyButton()"
       (click)="setTotalPrice()">
       Comprar
-    </button></p>
+    </button>
   </div>
+  </div>
+</div>
 
   <ng-template #noPedidos>
     <div class="noPedidos">

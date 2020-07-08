@@ -1,11 +1,14 @@
 <div class="card">
+  <div class="img">
   <img
     class="card-img-top"
-    src="assets/images/plato.jpg"
+    [src]="image"
     alt="Imagen del Restaurante"
   />
+</div>
   <div class="card-body">
-    <h3>Nombre del restaurante</h3>
-    <p>Rating here</p>
+    <h3>
+      {{ name }}
+    </h3>
   </div>
 </div>

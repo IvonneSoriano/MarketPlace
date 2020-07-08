@@ -3,28 +3,12 @@
   
   <h2>Restaurantes</h2>
   <div class="row">
-    <div class="col-12 col-sm-6 col-lg-4">
+    <div *ngFor="let restaurant of restaurants" class="col-12 col-sm-6 col-lg-4 col-card">
+      <a routerLink="{{restaurant['id']}}">
       <div class="content">
-        <app-restaurant-card></app-restaurant-card>
+        <app-restaurant-card image="{{ restaurant['imagePath'] }}" name="{{ restaurant['name'] }}" id="{{ restaurant['id'] }}"   ></app-restaurant-card>
       </div>
-    </div>
-
-    <div class="col-12 col-sm-6 col-lg-4">
-      <div class="content">
-        <app-restaurant-card></app-restaurant-card>
-      </div>
-    </div>
-
-    <div class="col-12 col-sm-6 col-lg-4">
-      <div class="content">
-        <app-restaurant-card></app-restaurant-card>
-      </div>
-    </div>
-
-    <div class="col-12 col-sm-6 col-lg-4">
-      <div class="content">
-        <app-restaurant-card></app-restaurant-card>
-      </div>
+    </a>
     </div>
   </div>
 </div>

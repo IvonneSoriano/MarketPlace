@@ -1,3 +1,4 @@
+import { RestaurantService } from './../../services/restaurant.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  public restaurants;
+  constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit(): void {
+    this.getRestaurants();
   }
-
+  getRestaurants(){
+  this.restaurantService.getAllRestaurants()
+  .subscribe(result => {
+    console.log(result['data']);
+    this.restaurants=result['data'];
+  })
+  }
 }
