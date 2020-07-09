@@ -4,6 +4,9 @@
     Crea una cuenta totalmente gratis para empezar a comprar en restaurantes
     <span class="shine">locales</span>
   </p>
+  <div *ngIf="serverError" class="alert alert-danger my-3">
+      {{serverError}}
+  </div>
   <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
     <div class="form-row">
       <div class="col-6 form-group">
@@ -40,6 +43,14 @@
           "
           >No puede llevar numeros</small
         >
+        <small
+        class="text-danger"
+        *ngIf="
+          formGroup.controls.name.hasError('minlength') &&
+          formGroup.controls.name.dirty
+        "
+        >Debe contener al menos 3 caracteres </small
+      >
       </div>
       <div class="col-6 form-group">
         <label for="lastname"
@@ -76,6 +87,14 @@
           "
           >No puede llevar numeros</small
         >
+        <small
+        class="text-danger"
+        *ngIf="
+          formGroup.controls.lastname.hasError('minlength') &&
+          formGroup.controls.lastname.dirty
+        "
+        >Debe contener al menos 3 caracteres </small
+      >
       </div>
     </div>
     <div class="form-row">

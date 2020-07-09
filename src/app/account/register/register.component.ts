@@ -29,6 +29,7 @@ export class RegisterComponent implements OnInit {
 
   emailDuplicated:string = null;
   phoneDuplicated:string = null;
+  serverError:string = null;
 
 
   constructor(private formBuilder: FormBuilder, private userService: UserService) { }
@@ -43,8 +44,8 @@ export class RegisterComponent implements OnInit {
 
 
     this.formGroup = this.formBuilder.group({
-      name: new FormControl("", [Validators.required, Validators.pattern(/^[A-Z]+$/i)]),
-      lastname: ["", [Validators.required, Validators.pattern(/^[A-Z]+$/i)]],
+      name: new FormControl("", [Validators.required, Validators.pattern(/^[A-Z]+$/i), Validators.minLength(3)]),
+      lastname: ["", [Validators.required, Validators.pattern(/^[A-Z]+$/i), Validators.minLength(3)]],
       email: ["", [Validators.required, Validators.pattern(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/)]],
       phone: ["", [Validators.required, Validators.pattern(/^\d{4}(-|\s)\d{4}$/)]],
       password: ["", [Validators.required, Validators.minLength(8), this.validatePassword ]],
@@ -125,6 +126,7 @@ export class RegisterComponent implements OnInit {
     err => {
       this.emailDuplicated = null
       this.phoneDuplicated = null
+      this.serverError = null
       let fieldErrors = err.error.errors;
       try {
         if(fieldErrors.length > 0){
@@ -138,9 +140,9 @@ export class RegisterComponent implements OnInit {
 
       } catch (error) {
         console.log(error)
+        this.serverError = "Parece que hubo un error, inténtalo más tarde"
       }
-
-
+      //console.log(err)
     });
   }
 }
