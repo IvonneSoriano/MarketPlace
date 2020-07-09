@@ -22,6 +22,8 @@ export class RestaurantPageComponent implements OnInit {
   public selectedPromo;
   public restaurantId;
   public totalPrice = 0;
+  public restaurant;
+  public imageRestaurant;
   constructor(private restaurantService: RestaurantService, private route: ActivatedRoute, private ticketService: TicketService) {
     route.params.subscribe(params => {
       this.restaurantId = params.restaurant;
@@ -29,7 +31,29 @@ export class RestaurantPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getRestaurant();
     this.getMenu();
+  }
+
+  getRestaurant(){
+    this.restaurantService.getRestaurant(this.restaurantId).subscribe(data => {
+      this.restaurant = data.data
+
+    },
+    err => {
+      this.restaurant = {
+        name: "Restaurante",
+        imagePath: "assets/images/wood.jpg"
+      }
+
+    }).add(() =>{
+      this.setBackgorundImage()
+    })
+
+  }
+
+  setBackgorundImage(){
+    this.imageRestaurant = this.restaurant['imagePath'];
   }
 
   getMenu() {
@@ -55,6 +79,7 @@ export class RestaurantPageComponent implements OnInit {
           alert("Hay error");
           console.log(error);
         })
+
   }
 
   getMenuDetail(menuId: number) {

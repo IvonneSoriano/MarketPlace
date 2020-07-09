@@ -1,10 +1,10 @@
 <div class="info">
     <h3>{{ name }}</h3>
     <div class="circle">
-    <img src="assets/images/pupusas.jpg">
+    <img [src]="image">
   </div>
   </div>
-     
+
   <div class="contometer d-flex">
     <button class="less" (click)="lessProduct()" [disabled]="cantProducto<1">-</button>
     <div class="display">{{ cantProducto }}</div>

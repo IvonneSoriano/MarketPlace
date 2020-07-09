@@ -4,4 +4,5 @@ menuId?: number;
 productCategory?: any;
 productName: string;
 unitaryPrice: number;
+imageURL: any;
 }

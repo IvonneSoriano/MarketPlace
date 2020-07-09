@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-8 col-lg-9 rest">
-    <div class="jumbotron jumbotron-fluid" style=" background-image: url('assets/images/wood.jpg')">
-      <h1>Restaurante #1</h1>
+    <div class="jumbotron jumbotron-fluid" style=" background-image: url({{imageRestaurant}})">
+      <h1>{{restaurant['name']}}</h1>
       <!-- Button trigger modal -->
     </div>
     <div class="p-20 menu" *ngIf="haveMenu; else noMenu">
@@ -30,7 +30,7 @@
           <div *ngFor="let menu of menus; let i = index" class="col-12 col-lg-6 mb-5">
             <a data-toggle="modal" data-target="#modalProduct" (click)="preSelectMenu(menu)">
               <div class="content">
-                <app-product id="{{menu['id']}}" price="{{menu['unitaryPrice']}}" name="{{ menu['productName']}}"></app-product>
+                <app-product id="{{menu['id']}}" price="{{menu['unitaryPrice']}}" name="{{ menu['productName']}}" image="{{ menu['imageURL']}}"></app-product>
               </div>
             </a>
           </div>
@@ -74,7 +74,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <app-product-card *ngIf="selectedMenu; else ModalPromo" menu="{{haveMenu}}" id="{{ selectedMenu['id'] }}" price="{{ selectedMenu['unitaryPrice'] }}" name="{{ selectedMenu['productName'] }}" ></app-product-card>
+          <app-product-card *ngIf="selectedMenu; else ModalPromo" menu="{{haveMenu}}" id="{{ selectedMenu['id'] }}" price="{{ selectedMenu['unitaryPrice'] }}" name="{{ selectedMenu['productName'] }}" image="{{ selectedMenu['imageURL'] }}" ></app-product-card>
           <ng-template #ModalPromo>
             <app-promo-card id="{{selectedPromo['id']}}" name="{{selectedPromo['name']}}" price="{{selectedPromo['totalPrice']}}"></app-promo-card>
           </ng-template>

@@ -12,8 +12,9 @@ export class ProductComponent implements OnInit {
   @Input() price: number;
   @Input() id: number;
   @Input() name: string;
+  @Input() image: string;
   ngOnInit(): void {
-    
+
   }
 
 }

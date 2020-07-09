@@ -12,6 +12,8 @@ export class RestaurantService {
   urlMenu = environment.restaurant + "/menu";
   urlPromotion = environment.restaurant + "/promotion";
   urlRestaurants = environment.restaurant + "/shop/findmany";
+  urlRestaurant = environment.restaurant + "/shop/find/"
+
 
   constructor(private http: HttpClient, private userService: UserService) { }
 
@@ -21,7 +23,14 @@ export class RestaurantService {
     });
     return this.http.post(this.urlRestaurants, { headers });
   }
-  
+
+
+
+  getRestaurant(restaurantId:number): any{
+    let url = this.urlRestaurant+restaurantId;
+    return this.http.get(url);
+  }
+
   getDailyMenu(shopId: number) {
     let url = this.urlMenu + `/find/${shopId}`;
     const headers = new HttpHeaders({

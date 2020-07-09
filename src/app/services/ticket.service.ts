@@ -26,6 +26,7 @@ export class TicketService {
         if(confirm("Tiene una orden abierta con otro Restaurante, ¿desea cancelarla?")){
           this.ticket.restaurantId = null;
           this.ticket.products = [];
+          this.ticket.productsDetail = [];
           this.addProductToList(shopId, productId, cant,name, price);
         }
       }

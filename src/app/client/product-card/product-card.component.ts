@@ -14,6 +14,7 @@ export class ProductCardComponent implements OnInit {
   @Input() name: string;
   @Input() price: number;
   @Input() menu: number;
+  @Input() image: string;
 
   public cantProducto = 1;
 

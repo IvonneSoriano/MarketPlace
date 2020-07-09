@@ -12,4 +12,8 @@ export class SearchingBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  findShop(e){
+    console.log(e.target.value)
+  }
+
 }
