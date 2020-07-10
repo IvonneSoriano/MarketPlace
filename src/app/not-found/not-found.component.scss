@@ -1,0 +1,22 @@
+$green: #24A6A6;
+$green-light: #96D9C6;
+.container{
+    text-align: center;
+    img{
+        max-width: 100%;
+        max-height: 500px;
+    }
+    a{
+        color: $green-light;
+        cursor: pointer;
+        &:hover{
+            color:$green;
+            text-decoration: $green;
+        }
+    }
+    @media(max-width:600px){
+        img{
+            max-height: 300px;
+        }
+    }
+}
