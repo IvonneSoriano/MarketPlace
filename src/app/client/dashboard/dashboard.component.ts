@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
   .subscribe(result => {
     console.log(result['data']);
     this.restaurants=result['data'];
+    this.restaurants.splice(0,1)
   })
   }
 }
