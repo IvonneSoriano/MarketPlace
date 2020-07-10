@@ -48,6 +48,9 @@ export class UserService {
     localStorage.setItem("usuario",JSON.stringify(data));
   }
 
+  removeLocalStorage(){
+    localStorage.removeItem("usuario");
+  }
   redirectTo(){
     let rol = JSON.parse(localStorage.getItem("usuario")).userRol;
     switch(rol){
@@ -70,6 +73,8 @@ export class UserService {
     let token = JSON.parse(localStorage.getItem("usuario"))["jwt"];
     return token;
   }
+
+
 
 
 }

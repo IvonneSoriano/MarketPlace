@@ -17,6 +17,9 @@ nav {
         font-weight: bold;
         // flex: 0 0 calc(20% - 20px);
         font-size: 25px;
+        img{
+            max-height: 70px;
+        }
     }
 
     .col1 {
@@ -54,6 +57,7 @@ nav {
         .account {
             display: flex;
             cursor: pointer;
+            align-items: center;
 
             p {
                 font-weight: bold;
@@ -62,9 +66,9 @@ nav {
             }
         }
 
-        .account {
-            display: none;
-        }
+        // .account {
+        //     display: none;
+        // }
     }
 
     .x {

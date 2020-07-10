@@ -19,7 +19,7 @@ export class RestaurantPageComponent implements OnInit {
   @ViewChild('ticket') ticket: any;
   @ViewChild('menu') menu: any;
   @ViewChild('boton') boton: any;
-  public imageBoton = "assets/icons/bill.svg";
+  public imageBoton = "assets/icons/buyer.svg";
   private count =0;
   public cantProducto = 1;
   public menus: [];
@@ -68,7 +68,7 @@ export class RestaurantPageComponent implements OnInit {
   activeClass() {
     this.count++;
     if(this.count%2==0){
-      this.imageBoton="assets/icons/bill.svg";
+      this.imageBoton="assets/icons/buyer.svg";
       this.renderer.removeClass(this.menu.nativeElement, "active");
       this.renderer.removeClass(this.boton.nativeElement, "active");
       this.renderer.removeClass(this.ticket.nativeElement, "active");

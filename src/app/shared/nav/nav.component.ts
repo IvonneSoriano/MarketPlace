@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { Component, OnInit, ElementRef, ViewChild, Renderer2 } from '@angular/core';
 import { Router} from '@angular/router';
 
@@ -9,7 +10,7 @@ import { Router} from '@angular/router';
 export class NavComponent implements OnInit {
 
   @ViewChild("navIcon", { static: false }) navIcon: ElementRef;
-  constructor(private renderer: Renderer2, private router: Router) { }
+  constructor(private renderer: Renderer2, private router: Router, private userService: UserService) { }
 
   private count = 0;
 
@@ -31,7 +32,8 @@ export class NavComponent implements OnInit {
   goToDash(){
     this.router.navigate(['client']);
   }
-  goToTicket(){
-    this.router.navigate(['client/ticket']);
+ exit(){
+    this.userService.removeLocalStorage();
+    this.router.navigate(['account/login']);
   }
 }
