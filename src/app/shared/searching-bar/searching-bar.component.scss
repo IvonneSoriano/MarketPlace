@@ -36,6 +36,8 @@ cursive;
 
             .form {
                 width: 80%;
+                opacity: 0;
+                display: none;
 
                 .search-bar {
                     display: flex;

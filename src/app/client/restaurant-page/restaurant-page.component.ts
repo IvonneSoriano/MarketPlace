@@ -37,7 +37,7 @@ export class RestaurantPageComponent implements OnInit {
 
   getRestaurant(){
     this.restaurantService.getRestaurant(this.restaurantId).subscribe(data => {
-      this.restaurant = data.data
+      this.restaurant = data.data;
 
     },
     err => {

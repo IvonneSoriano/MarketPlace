@@ -31,4 +31,7 @@ export class NavComponent implements OnInit {
   goToDash(){
     this.router.navigate(['client']);
   }
+  goToTicket(){
+    this.router.navigate(['client/ticket']);
+  }
 }
