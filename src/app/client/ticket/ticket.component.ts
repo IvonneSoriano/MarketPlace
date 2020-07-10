@@ -10,10 +10,10 @@ import { Subscription } from 'rxjs';
 export class TicketComponent implements OnInit {
 
   public pedido;
-  public totalPrice:number = 0;
+  public totalPrice: number = 0;
   public subs: Subscription;
   constructor(private ticketService: TicketService) {
-    this.subs = this.ticketService.addProductObs().subscribe(data =>{
+    this.subs = this.ticketService.addProductObs().subscribe(data => {
       this.showProductList();
     })
   }
@@ -31,43 +31,43 @@ export class TicketComponent implements OnInit {
     this.totalPriceCalculate()
   }
 
-  lessProduct(id:number, cant:number){
-    if(cant>1){
-    cant--;
-    this.editProduct(id,cant);
-    this.showProductList();
-  }
-  }
-
-  plussProduct(id:number, cant:number){
-    if(cant<10){
-    cant++;
-    this.editProduct(id,cant);
-    this.showProductList();
-  }
+  lessProduct(id: number, cant: number) {
+    if (cant > 1) {
+      cant--;
+      this.editProduct(id, cant);
+      this.showProductList();
+    }
   }
 
-  editProduct(id:number, cant:number){
-    this.ticketService.changeQuantity(id,cant);
+  plussProduct(id: number, cant: number) {
+    if (cant < 10) {
+      cant++;
+      this.editProduct(id, cant);
+      this.showProductList();
+    }
   }
 
-  removeProduct(id:number){
+  editProduct(id: number, cant: number) {
+    this.ticketService.changeQuantity(id, cant);
+  }
+
+  removeProduct(id: number) {
     this.ticketService.removeProduct(id);
     this.showProductList();
   }
 
-  totalPriceCalculate(){
+  totalPriceCalculate() {
     this.totalPrice = 0
     this.pedido.forEach(prod => {
       this.totalPrice = this.totalPrice + (prod["price"] * prod["quantity"]);
     });
   }
 
-  enableBuyButton(): boolean{
+  enableBuyButton(): boolean {
     return !(this.totalPrice > 0);
   }
 
-  setTotalPrice(){
+  setTotalPrice() {
     this.ticketService.setTotalPrice(this.totalPrice);
   }
 

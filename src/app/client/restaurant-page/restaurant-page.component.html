@@ -1,5 +1,8 @@
 <div class="row">
-  <div class="col-md-8 col-lg-9 rest">
+  <div  cdkDrag class="ticketBoton" (click)="activeClass()" #boton>
+    <img [src]="imageBoton" alt="">
+  </div>
+  <div class="col-md-8 col-lg-9 rest" #menu>
     <div class="jumbotron jumbotron-fluid" style=" background-image: url({{imageRestaurant}})">
       <h1>{{restaurant['name']}}</h1>
       <!-- Button trigger modal -->
@@ -46,10 +49,10 @@
     </div>
     </ng-template>
   </div>
-  <div class="d-none d-md-block col-md-4 col-lg-3 ticket">
+  <div class=" col-12 col-md-4 col-lg-3 ticket" #ticket>
     <app-ticket></app-ticket>
   </div>
-
+</div>
   <!-- Modal PRODUCTOS -->
   <div
   *ngIf="selectedMenu || selectedPromo"
@@ -107,3 +110,5 @@
       </div>
     </div>
   </div>
+
+
